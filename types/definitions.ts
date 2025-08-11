@@ -1,4 +1,5 @@
 import { JSX } from "react"
+import { LayoutsResponse } from "./pocketbase-type"
 
 export type BlockProps = {
   x: number
@@ -8,16 +9,21 @@ export type BlockProps = {
   h: number
 }
 
+export enum ComponentsOptions  {
+  "Detils" = "Detils",
+  "Timer" = "Timer",
+  "Refresh" = "Refresh",
+  "Soon" = "Soon"
+}
+
 export type Block =  {
-
-}
-
-export type BlockFrame = {
-  x: number
-  y: number
-  z: number
-  w: number
-  h: number
+  x?: number
+  y?: number
+  z?: number
+  w?: number
+  h?: number
+  component?: ComponentsOptions
   isBoard?: boolean
-  component?: (props: BlockProps) => JSX.Element
 }
+
+export type Layout = LayoutsResponse<Block[]>

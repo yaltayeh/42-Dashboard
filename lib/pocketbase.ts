@@ -55,7 +55,7 @@ const getPocketBaseUrl = () => {
   }
   
   // Local development fallback (outside Docker)
-  console.log('SSR: Using local development URL')
+  // console.log('SSR: Using local development URL')
   return "http://127.0.0.1:8090"
 }
 
