@@ -1,5 +1,7 @@
 import { Detils } from "@/components/detils";
+import Refresh from "@/components/refresh";
 import { Timer } from "@/components/timer";
+import { cn } from "@/lib/utils";
 import { BlockFrame } from "@/types/definitions";
 
 export default function Home() {
@@ -13,6 +15,7 @@ export default function Home() {
     { x: 3, y: 4, z: 1, w: 2, h: 4, component: Timer },
     { x: 7, y: 4, z: 2, w: 3, h: 2, component: Detils },
     { x: 5, y: 6, z: 1, w: 2, h: 2, component: Detils },
+    { x: 0, y: 0, z: 100, w: 1, h: 1, component: Refresh, isBoard: false },
   ]
 
   const dots = [];
@@ -41,7 +44,7 @@ export default function Home() {
           <div className="relative w-full h-full">
             {blocks.map((rec, index) => (
               <div key={index}
-                className="absolute bg-gray-500 border-2 border-black/20 rounded-2xl"
+                className={cn("absolute", rec.isBoard === false ? "" : "bg-gray-500 border-2 border-black/20 rounded-2xl")}
                 style={{
                   left: `${rec.x * unit_x}%`,
                   top: `${rec.y * unit_y}%`,

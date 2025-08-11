@@ -18,5 +18,6 @@ export type BlockFrame = {
   z: number
   w: number
   h: number
+  isBoard?: boolean
   component?: (props: BlockProps) => JSX.Element
 }
