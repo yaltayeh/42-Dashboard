@@ -11,6 +11,7 @@ export enum Collections {
 	Mfas = "_mfas",
 	Otps = "_otps",
 	Superusers = "_superusers",
+	Data = "data",
 	Layouts = "layouts",
 	Users = "users",
 }
@@ -91,18 +92,23 @@ export type SuperusersRecord = {
 	verified?: boolean
 }
 
-export enum LayoutsTestOptions {
-	"A" = "A",
-	"B" = "B",
-	"C" = "C",
+export enum DataKeyOptions {
+	"Qout" = "Qout",
 }
+export type DataRecord<Tdata = unknown> = {
+	created?: IsoDateString
+	data?: null | Tdata
+	id: string
+	key: DataKeyOptions
+	updated?: IsoDateString
+}
+
 export type LayoutsRecord<Tblocks = unknown> = {
 	blocks?: null | Tblocks
 	cols?: number
 	created?: IsoDateString
 	id: string
 	rows?: number
-	test?: LayoutsTestOptions
 	updated?: IsoDateString
 }
 
@@ -125,6 +131,7 @@ export type ExternalauthsResponse<Texpand = unknown> = Required<ExternalauthsRec
 export type MfasResponse<Texpand = unknown> = Required<MfasRecord> & BaseSystemFields<Texpand>
 export type OtpsResponse<Texpand = unknown> = Required<OtpsRecord> & BaseSystemFields<Texpand>
 export type SuperusersResponse<Texpand = unknown> = Required<SuperusersRecord> & AuthSystemFields<Texpand>
+export type DataResponse<Tdata = unknown, Texpand = unknown> = Required<DataRecord<Tdata>> & BaseSystemFields<Texpand>
 export type LayoutsResponse<Tblocks = unknown, Texpand = unknown> = Required<LayoutsRecord<Tblocks>> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
@@ -136,6 +143,7 @@ export type CollectionRecords = {
 	_mfas: MfasRecord
 	_otps: OtpsRecord
 	_superusers: SuperusersRecord
+	data: DataRecord
 	layouts: LayoutsRecord
 	users: UsersRecord
 }
@@ -146,6 +154,7 @@ export type CollectionResponses = {
 	_mfas: MfasResponse
 	_otps: OtpsResponse
 	_superusers: SuperusersResponse
+	data: DataResponse
 	layouts: LayoutsResponse
 	users: UsersResponse
 }
@@ -159,6 +168,7 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: '_mfas'): RecordService<MfasResponse>
 	collection(idOrName: '_otps'): RecordService<OtpsResponse>
 	collection(idOrName: '_superusers'): RecordService<SuperusersResponse>
+	collection(idOrName: 'data'): RecordService<DataResponse>
 	collection(idOrName: 'layouts'): RecordService<LayoutsResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }

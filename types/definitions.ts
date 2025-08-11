@@ -1,5 +1,4 @@
-import { JSX } from "react"
-import { LayoutsResponse } from "./pocketbase-type"
+import { LayoutsResponse } from "./pocketbase-types"
 
 export type BlockProps = {
   x: number
@@ -13,7 +12,8 @@ export enum ComponentsOptions  {
   "Detils" = "Detils",
   "Timer" = "Timer",
   "Refresh" = "Refresh",
-  "Soon" = "Soon"
+  "Soon" = "Soon",
+  "Qout" = "Qout"
 }
 
 export type Block =  {

@@ -1,4 +1,5 @@
 import { Detils } from "@/components/detils";
+import Qout from "@/components/qout";
 import Refresh from "@/components/refresh";
 import { Soon } from "@/components/soon";
 import { Timer } from "@/components/timer";
@@ -11,6 +12,7 @@ const componentsMap = {
   "Timer": Timer,
   "Soon": Soon,
   "Refresh": Refresh,
+  "Qout": Qout
 }
 
 function CallComponent({ block }: { block: Block }) {
