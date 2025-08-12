@@ -1,8 +1,8 @@
 "use client"
 
-import { DataProvider, useDataStore } from "@/context/data-store"
+import { useDataStore } from "@/context/data-store"
 
-function Test() {
+export default function Qout() {
   const { qout } = useDataStore()
 
   return (
@@ -10,13 +10,5 @@ function Test() {
       <p>"{qout?.qout}"</p>
       <p>{qout?.writer}</p>
     </div>
-  )
-}
-
-export default function Qout() {
-  return (
-    <DataProvider>
-      <Test />
-    </DataProvider>
   )
 }

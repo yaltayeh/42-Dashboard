@@ -1,19 +1,8 @@
-import { Detils } from "@/components/detils";
-import Qout from "@/components/qout";
-import Refresh from "@/components/refresh";
-import { Soon } from "@/components/soon";
-import { Timer } from "@/components/timer";
+import { DataProvider } from "@/context/data-store";
 import pb from "@/lib/pocketbase";
 import { cn } from "@/lib/utils";
+import { componentsMap } from "@/types/data-define";
 import { Block, ComponentsOptions, Layout } from "@/types/definitions";
-
-const componentsMap = {
-  "Detils": Detils,
-  "Timer": Timer,
-  "Soon": Soon,
-  "Refresh": Refresh,
-  "Qout": Qout
-}
 
 function CallComponent({ block }: { block: Block }) {
   const Component = componentsMap[block.component || ComponentsOptions.Detils];
@@ -85,19 +74,21 @@ export default async function Home() {
       <div className="w-full h-full fixed justify-center bg-white p-5">
         <div className=" relative w-full h-full bg-gray-600 rounded-2xl">
           <div className="relative w-full h-full">
-            {blocks.map((block, index) => (
-              <div key={index}
-                className={cn("absolute", block.isBoard === false ? "" : "bg-gray-500 border-2 border-black/20 rounded-2xl")}
-                style={{
-                  left: `${(block.x || 0) * unit_x}%`,
-                  top: `${(block.y || 0) * unit_y}%`,
-                  zIndex: block.z || 1,
-                  width: `${(block.w || 1) * unit_x}%`,
-                  height: `${(block.h || 1) * unit_y}%`
-                }}>
-                <CallComponent block={block} />
-              </div>
-            ))}
+            <DataProvider>
+              {blocks.map((block, index) => (
+                <div key={index}
+                  className={cn("absolute", block.isBoard === false ? "" : "bg-gray-500 border-2 border-black/20 rounded-2xl")}
+                  style={{
+                    left: `${(block.x || 0) * unit_x}%`,
+                    top: `${(block.y || 0) * unit_y}%`,
+                    zIndex: block.z || 1,
+                    width: `${(block.w || 1) * unit_x}%`,
+                    height: `${(block.h || 1) * unit_y}%`
+                  }}>
+                  <CallComponent block={block} />
+                </div>
+              ))}
+            </DataProvider>
             <div>{dots}</div>
           </div>
         </div>

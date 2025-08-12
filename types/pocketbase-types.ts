@@ -94,6 +94,7 @@ export type SuperusersRecord = {
 
 export enum DataKeyOptions {
 	"Qout" = "Qout",
+	"Events" = "Events",
 }
 export type DataRecord<Tdata = unknown> = {
 	created?: IsoDateString
