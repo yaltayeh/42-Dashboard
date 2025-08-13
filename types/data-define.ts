@@ -1,19 +1,3 @@
-import { Detils } from "@/components/detils"
-import Events from "@/components/events"
-import Qout from "@/components/qout"
-import Refresh from "@/components/refresh"
-import { Soon } from "@/components/soon"
-import { Timer } from "@/components/timer"
-
-export const componentsMap = {
-  "Detils": Detils,
-  "Timer": Timer,
-  "Soon": Soon,
-  "Refresh": Refresh,
-  "Qout": Qout,
-  "Events": Events,
-}
-
 export type Qout = {
 	qout?: string,
 	writer?: string

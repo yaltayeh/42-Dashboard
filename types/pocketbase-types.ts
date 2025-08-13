@@ -13,6 +13,7 @@ export enum Collections {
 	Superusers = "_superusers",
 	Data = "data",
 	Layouts = "layouts",
+	Students = "students",
 	Users = "users",
 }
 
@@ -113,6 +114,22 @@ export type LayoutsRecord<Tblocks = unknown> = {
 	updated?: IsoDateString
 }
 
+export enum StudentsRolesOptions {
+	"Student" = "Student",
+	"Admin" = "Admin",
+}
+export type StudentsRecord<Taccount = unknown> = {
+	account?: null | Taccount
+	account_id?: string
+	created?: IsoDateString
+	id: string
+	image?: string
+	name?: string
+	roles?: StudentsRolesOptions[]
+	updated?: IsoDateString
+	username?: string
+}
+
 export type UsersRecord = {
 	avatar?: string
 	created?: IsoDateString
@@ -134,6 +151,7 @@ export type OtpsResponse<Texpand = unknown> = Required<OtpsRecord> & BaseSystemF
 export type SuperusersResponse<Texpand = unknown> = Required<SuperusersRecord> & AuthSystemFields<Texpand>
 export type DataResponse<Tdata = unknown, Texpand = unknown> = Required<DataRecord<Tdata>> & BaseSystemFields<Texpand>
 export type LayoutsResponse<Tblocks = unknown, Texpand = unknown> = Required<LayoutsRecord<Tblocks>> & BaseSystemFields<Texpand>
+export type StudentsResponse<Taccount = unknown, Texpand = unknown> = Required<StudentsRecord<Taccount>> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
 // Types containing all Records and Responses, useful for creating typing helper functions
@@ -146,6 +164,7 @@ export type CollectionRecords = {
 	_superusers: SuperusersRecord
 	data: DataRecord
 	layouts: LayoutsRecord
+	students: StudentsRecord
 	users: UsersRecord
 }
 
@@ -157,6 +176,7 @@ export type CollectionResponses = {
 	_superusers: SuperusersResponse
 	data: DataResponse
 	layouts: LayoutsResponse
+	students: StudentsResponse
 	users: UsersResponse
 }
 
@@ -171,5 +191,6 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: '_superusers'): RecordService<SuperusersResponse>
 	collection(idOrName: 'data'): RecordService<DataResponse>
 	collection(idOrName: 'layouts'): RecordService<LayoutsResponse>
+	collection(idOrName: 'students'): RecordService<StudentsResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }

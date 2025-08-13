@@ -1,12 +1,19 @@
+import { ComponentsMap, ComponentsOptions } from "@/components/components-map";
 import { DataProvider } from "@/context/data-store";
 import pb from "@/lib/pocketbase";
 import { cn } from "@/lib/utils";
-import { componentsMap } from "@/types/data-define";
-import { Block, ComponentsOptions, Layout } from "@/types/definitions";
+import { Block, Layout } from "@/types/definitions";
 
 function CallComponent({ block }: { block: Block }) {
-  const Component = componentsMap[block.component || ComponentsOptions.Detils];
+  const Component = ComponentsMap[block.component || ComponentsOptions.Details];
 
+  if (!Component) {
+    return (
+      <div className="w-full h-full grid text-center p-2 place-content-center">
+        <span><strong>{block.component}</strong> not exist</span>
+      </div>
+    )
+  }
   return (
     <Component
       x={block.x || 0}
@@ -19,7 +26,7 @@ function CallComponent({ block }: { block: Block }) {
 }
 
 export default async function Home() {
-  let cols = 50;
+  let cols = 40;
   let rows = 10;
 
   const blocks: Block[] = [
@@ -74,7 +81,7 @@ export default async function Home() {
       <div className="w-full h-full fixed justify-center bg-white p-5">
         <div className=" relative w-full h-full bg-gray-600 rounded-2xl">
           <div className="relative w-full h-full">
-            <DataProvider>
+            {/* <DataProvider> */}
               {blocks.map((block, index) => (
                 <div key={index}
                   className={cn("absolute", block.isBoard === false ? "" : "bg-gray-500 border-2 border-black/20 rounded-2xl")}
@@ -88,7 +95,7 @@ export default async function Home() {
                   <CallComponent block={block} />
                 </div>
               ))}
-            </DataProvider>
+            {/* </DataProvider> */}
             <div>{dots}</div>
           </div>
         </div>

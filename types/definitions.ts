@@ -1,4 +1,6 @@
-import { LayoutsResponse } from "./pocketbase-types"
+import { Account } from "next-auth"
+import { LayoutsResponse, StudentsRecord } from "./pocketbase-types"
+import { ComponentsOptions } from "@/components/components-map"
 
 export type BlockProps = {
   x: number
@@ -6,14 +8,6 @@ export type BlockProps = {
   z: number
   w: number
   h: number
-}
-
-export enum ComponentsOptions  {
-  "Detils" = "Detils",
-  "Timer" = "Timer",
-  "Refresh" = "Refresh",
-  "Soon" = "Soon",
-  "Qout" = "Qout"
 }
 
 export type Block =  {
@@ -27,3 +21,5 @@ export type Block =  {
 }
 
 export type Layout = LayoutsResponse<Block[]>
+
+export type Student = StudentsRecord<Account | null>
