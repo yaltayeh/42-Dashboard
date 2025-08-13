@@ -1,0 +1,54 @@
+{
+	"rows": 12,
+	"cols": 25,
+	"blocks": [
+		{
+			"x": 22,
+			"y": 0,
+			"z": 1,
+			"w": 2,
+			"h": 1,
+			"component": "Profile"
+		},
+		{
+			"x": 0,
+			"y": 0,
+			"z": 1,
+			"w": 2,
+			"h": 3,
+			"component": "Details"
+		},
+		{
+			"x": 3,
+			"y": 4,
+			"z": 1,
+			"w": 2,
+			"h": 4,
+			"component": "Timer"
+		},
+		{
+			"x": 7,
+			"y": 4,
+			"z": 2,
+			"w": 5,
+			"h": 2,
+			"component": "Qout"
+		},
+		{
+			"x": 5,
+			"y": 6,
+			"z": 1,
+			"w": 2,
+			"h": 2,
+			"component": "Soon"
+		},
+		{
+			"x": 15,
+			"y": 4,
+			"z": 0,
+			"w": 4,
+			"h": 4,
+			"component": "Events"
+		}
+	]
+}
